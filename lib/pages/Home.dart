@@ -21,17 +21,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Carousel in vertical scrollable'),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: 16.0),
-        itemBuilder: (BuildContext context, int index) {
-          if(index % 2 == 0) {
-            return _buildCarousel(context, index ~/ 2);
-          }
-          else {
-            return Divider();
-          }
-        },
-      ),
+      body: _buildCarousel(context, 1),
     );
   }
 
