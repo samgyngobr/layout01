@@ -64,41 +64,33 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Carousel in vertical scrollable'),
       ),
-      body: _buildCarousel(context, 1),
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          SizedBox(height: 15.0),
+          Text('Carousel'),
+          SizedBox(height: 15.0),
+          SizedBox(
+            // you may want to use an aspect ratio here for tablet support
+            height: 100.0,
+            child: PageView.builder(
+              // store this controller in a State to save the carousel scroll position
+              itemCount: 3,
+              controller: PageController(viewportFraction: 0.8),
+              itemBuilder: (BuildContext context, int itemIndex) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.0),
+                  child: cardC,
+                );
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 
 
-
-
-  Widget _buildCarousel(BuildContext context, int carouselIndex) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        SizedBox(height: 15.0),
-        Text('Carousel $carouselIndex'),
-        SizedBox(height: 15.0),
-        SizedBox(
-          // you may want to use an aspect ratio here for tablet support
-          height: 100.0,
-          child: PageView.builder(
-            // store this controller in a State to save the carousel scroll position
-            controller: PageController(viewportFraction: 0.8),
-            itemBuilder: (BuildContext context, int itemIndex) {
-              return _buildCarouselItem(context, carouselIndex, itemIndex);
-            },
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _buildCarouselItem(BuildContext context, int carouselIndex, int itemIndex) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: cardC,
-    );
-  }
 
 
 
