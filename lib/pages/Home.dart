@@ -15,23 +15,44 @@ class Home extends StatefulWidget
 class _HomeState extends State<Home> {
 
 
-  final cardA = Card(
-      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(15.0) ),
-      elevation: 3,
+  final cardC = Container(
+
+    decoration: BoxDecoration(
       color: Colors.blue,
-      child: Container(
-          child: Column(
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+
+    child: Row(
+      children: <Widget>[
+
+        Expanded(
+          child: Container(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+
+                  Text( "Title", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
+                  Text( "Subtitle?", style: TextStyle( color: Colors.white, fontSize: 18 ) ),
+
+                ],
+              )
+          ),
+        ),
+
+        Container(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
               children: <Widget>[
 
-                const ListTile(
-                  contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-                  title: Text( 'The Enchanted Nightingale', style: TextStyle( color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold ) ),
-                  subtitle: Text( 'Music by Julie Gable. Lyrics by Sidney Stein.', style: TextStyle( color: Colors.white, fontSize: 18 ) ),
-                ),
+                Text( "1", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
 
-              ]
-          )
-      )
+              ],
+            )
+        ),
+
+      ],
+    ),
   );
 
 
@@ -57,11 +78,9 @@ class _HomeState extends State<Home> {
         SizedBox(height: 15.0),
         Text('Carousel $carouselIndex'),
         SizedBox(height: 15.0),
-        cardA,
-        SizedBox(height: 15.0),
         SizedBox(
           // you may want to use an aspect ratio here for tablet support
-          height: 200.0,
+          height: 100.0,
           child: PageView.builder(
             // store this controller in a State to save the carousel scroll position
             controller: PageController(viewportFraction: 0.8),
@@ -77,12 +96,7 @@ class _HomeState extends State<Home> {
   Widget _buildCarouselItem(BuildContext context, int carouselIndex, int itemIndex) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 4.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-        ),
-      ),
+      child: cardC,
     );
   }
 
