@@ -15,6 +15,33 @@ class Home extends StatefulWidget
 class _HomeState extends State<Home> {
 
 
+  final List<Map<String, dynamic>> _listViewData = [
+    {
+      "title"  : "Titulo A",
+      "content": "Conteudo A",
+      "status" : "Atendimento",
+      "date"   : "12/04/2017"
+    },
+    {
+      "title"  : "Titulo B",
+      "content": "Conteudo B",
+      "status" : "Atendimento",
+      "date"   : "12/04/2017"
+    },
+    {
+      "title"  : "Titulo C",
+      "content": "Conteudo C",
+      "status" : "Atendimento",
+      "date"   : "12/04/2017"
+    },
+    {
+      "title"  : "Titulo D",
+      "content": "Conteudo D",
+      "status" : "Atendimento",
+      "date"   : "12/04/2017"
+    },
+  ];
+
   @override
   Widget build(BuildContext context)
   {
@@ -33,12 +60,12 @@ class _HomeState extends State<Home> {
             height: 100.0,
             child: PageView.builder(
               // store this controller in a State to save the carousel scroll position
-              itemCount: 3,
+              itemCount: _listViewData.length,
               controller: PageController(viewportFraction: 0.8),
               itemBuilder: (BuildContext context, int itemIndex) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 4.0),
-                  child: _card(),
+                  child: _card( _listViewData[itemIndex] ),
                 );
               },
             ),
@@ -49,9 +76,7 @@ class _HomeState extends State<Home> {
   }
 
 
-
-
-  Widget _card() {
+  Widget _card( Map<String, dynamic> item ) {
     return Container(
 
       decoration: BoxDecoration(
@@ -69,8 +94,8 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
 
-                    Text( "Title", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
-                    Text( "Subtitle?", style: TextStyle( color: Colors.white, fontSize: 18 ) ),
+                    Text( item['title'], style: TextStyle( color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold ) ),
+                    Text( item['content'], style: TextStyle( color: Colors.white, fontSize: 16 ) ),
 
                   ],
                 )
@@ -82,7 +107,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: <Widget>[
 
-                  Text( "1", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
+                  Text( item['date'], style: TextStyle( color: Colors.white, fontSize: 16 ) ),
 
                 ],
               )
