@@ -15,48 +15,6 @@ class Home extends StatefulWidget
 class _HomeState extends State<Home> {
 
 
-  final cardC = Container(
-
-    decoration: BoxDecoration(
-      color: Colors.blue,
-      borderRadius: BorderRadius.circular(8.0),
-    ),
-
-    child: Row(
-      children: <Widget>[
-
-        Expanded(
-          child: Container(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-
-                  Text( "Title", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
-                  Text( "Subtitle?", style: TextStyle( color: Colors.white, fontSize: 18 ) ),
-
-                ],
-              )
-          ),
-        ),
-
-        Container(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: <Widget>[
-
-                Text( "1", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
-
-              ],
-            )
-        ),
-
-      ],
-    ),
-  );
-
-
-
   @override
   Widget build(BuildContext context)
   {
@@ -80,7 +38,7 @@ class _HomeState extends State<Home> {
               itemBuilder: (BuildContext context, int itemIndex) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 4.0),
-                  child: cardC,
+                  child: _card(),
                 );
               },
             ),
@@ -92,6 +50,49 @@ class _HomeState extends State<Home> {
 
 
 
+
+  Widget _card() {
+    return Container(
+
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+
+      child: Row(
+        children: <Widget>[
+
+          Expanded(
+            child: Container(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+
+                    Text( "Title", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
+                    Text( "Subtitle?", style: TextStyle( color: Colors.white, fontSize: 18 ) ),
+
+                  ],
+                )
+            ),
+          ),
+
+          Container(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: <Widget>[
+
+                  Text( "1", style: TextStyle( color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold ) ),
+
+                ],
+              )
+          ),
+
+        ],
+      ),
+
+    );
+  }
 
 
 
