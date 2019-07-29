@@ -14,6 +14,28 @@ class Home extends StatefulWidget
 
 class _HomeState extends State<Home> {
 
+
+  final cardA = Card(
+      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(15.0) ),
+      elevation: 3,
+      color: Colors.blue,
+      child: Container(
+          child: Column(
+              children: <Widget>[
+
+                const ListTile(
+                  contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+                  title: Text( 'The Enchanted Nightingale', style: TextStyle( color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold ) ),
+                  subtitle: Text( 'Music by Julie Gable. Lyrics by Sidney Stein.', style: TextStyle( color: Colors.white, fontSize: 18 ) ),
+                ),
+
+              ]
+          )
+      )
+  );
+
+
+
   @override
   Widget build(BuildContext context)
   {
@@ -32,7 +54,11 @@ class _HomeState extends State<Home> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
+        SizedBox(height: 15.0),
         Text('Carousel $carouselIndex'),
+        SizedBox(height: 15.0),
+        cardA,
+        SizedBox(height: 15.0),
         SizedBox(
           // you may want to use an aspect ratio here for tablet support
           height: 200.0,
@@ -53,7 +79,7 @@ class _HomeState extends State<Home> {
       padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: Colors.blue,
           borderRadius: BorderRadius.all(Radius.circular(4.0)),
         ),
       ),
